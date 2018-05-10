@@ -11,6 +11,7 @@
     <modules>
         <module>demo</module>
         <module>spring-boot-email</module>
+        <module>spring-boot-scan-login</module>
     </modules>
 
 
