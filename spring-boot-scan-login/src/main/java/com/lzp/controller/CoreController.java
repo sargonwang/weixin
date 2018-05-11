@@ -23,8 +23,8 @@ public class CoreController {
     @Value("${appid}")
     private String appid;
 
-    @Value("${domain}")
-    private String domain;
+    @Value("${callBack}")
+    private String callBack;
 
     @Value("${scope}")
     private String scope;
@@ -33,10 +33,12 @@ public class CoreController {
     private String appsecret;
 
 
+
+
     @RequestMapping("/")
     public String index(Model model) throws UnsupportedEncodingException {
         String oauthUrl = "https://open.weixin.qq.com/connect/qrconnect?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
-        String redirect_uri = URLEncoder.encode(domain + "callBack", "utf-8"); ;
+        String redirect_uri = URLEncoder.encode(callBack, "utf-8"); ;
         oauthUrl =  oauthUrl.replace("APPID",appid).replace("REDIRECT_URI",redirect_uri).replace("SCOPE",scope);
         model.addAttribute("name","liuzp");
         model.addAttribute("oauthUrl",oauthUrl);
@@ -45,7 +47,7 @@ public class CoreController {
 
     @RequestMapping("/1")
     public String index1(Model model) throws UnsupportedEncodingException {
-        String redirect_uri = URLEncoder.encode(domain + "callBack", "utf-8"); ;
+        String redirect_uri = URLEncoder.encode(callBack, "utf-8"); ;
         model.addAttribute("name","liuzp");
         model.addAttribute("appid",appid);
         model.addAttribute("scope",scope);

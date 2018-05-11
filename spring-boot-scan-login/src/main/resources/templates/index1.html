@@ -8,11 +8,8 @@
 
 <body>
         <h1>hello! <label th:text="${name}"></label></h1>
-
         <div id="login_container"></div>
-
     <script th:inline="javascript">
-
         var obj = new WxLogin({
             self_redirect:true,
             id:"login_container",
@@ -23,9 +20,6 @@
             style: "",
             href: ""
         });
-
     </script>
-
-
 </body>
 </html>
