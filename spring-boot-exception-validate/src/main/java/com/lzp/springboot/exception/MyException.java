@@ -1,5 +1,7 @@
 package com.lzp.springboot.exception;
 
+import com.lzp.springboot.util.Code;
+
 public class MyException extends RuntimeException {
 
     private static final long serialVersionUID = -5875371379845226068L;
@@ -19,7 +21,7 @@ public class MyException extends RuntimeException {
     /**
      * 具体异常码
      */
-    private int code = -1;
+    private int code = Code.FAILED;
 
     public String getMsg() {
         return msg;

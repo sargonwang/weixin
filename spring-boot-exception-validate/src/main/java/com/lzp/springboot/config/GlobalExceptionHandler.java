@@ -1,6 +1,7 @@
 package com.lzp.springboot.config;
 
 import com.lzp.springboot.exception.MyException;
+import com.lzp.springboot.util.Code;
 import com.lzp.springboot.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class GlobalExceptionHandler {
           FieldError fieldError = ex.getFieldError();
           sb.append(fieldError.getDefaultMessage());
           r.setMsg(sb.toString());
-          r.setCode(-1);
+          r.setCode(Code.FAILED);
           return r;
      }
 
