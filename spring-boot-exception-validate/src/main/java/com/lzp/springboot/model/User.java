@@ -1,4 +1,4 @@
-package com.lzp.springbootexceptionvalidate.model;
+package com.lzp.springboot.model;
 
 import javax.validation.constraints.NotNull;
 

@@ -1,6 +1,7 @@
-package com.lzp.springbootexceptionvalidate.config;
+package com.lzp.springboot.config;
 
-import com.lzp.springbootexceptionvalidate.util.Response;
+import com.lzp.springboot.exception.MyException;
+import com.lzp.springboot.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
@@ -9,26 +10,34 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
      private Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-     @ExceptionHandler(value = Exception.class)
+     @ExceptionHandler(value = BindException.class)
      @ResponseBody
-     public Response<String> bindExceptionErrorHandler(Exception ex) throws Exception {
+     public Response<String> bindExceptionErrorHandler(BindException ex) throws Exception {
           logger.error("bindExceptionErrorHandler info:{}",ex.getMessage());
           Response<String> r = new Response<>();
           StringBuilder sb = new StringBuilder();
-          FieldError fieldError = ((BindException) ex).getFieldError();
+          FieldError fieldError = ex.getFieldError();
           sb.append(fieldError.getDefaultMessage());
           r.setMsg(sb.toString());
-          r.setCode(400);
+          r.setCode(-1);
           return r;
      }
+
+
+    @ExceptionHandler(value = MyException.class)
+    @ResponseBody
+    public Response<String> myExceptionErrorHandler(MyException ex) throws Exception {
+        logger.error("myExceptionErrorHandler info:{}",ex.getMessage());
+        Response<String> r = new Response<>();
+        r.setMsg(ex.getMsg());
+        r.setCode(ex.getCode());
+        return r;
+    }
 
 
 

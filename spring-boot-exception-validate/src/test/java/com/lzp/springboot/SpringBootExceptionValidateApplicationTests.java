@@ -1,4 +1,4 @@
-package com.lzp.springbootexceptionvalidate;
+package com.lzp.springboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

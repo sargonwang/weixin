@@ -1,4 +1,4 @@
-package com.lzp.springbootexceptionvalidate.util;
+package com.lzp.springboot.util;
 
 public class Code {
 
