@@ -1,0 +1,20 @@
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: input1 #这个需要发布者-订阅者一致才行, 才能在一个通道内
+          binder: rabbit1
+
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: admin
+                password: admin
+                virtual-host: my_vhost
